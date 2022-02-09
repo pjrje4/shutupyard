@@ -8,6 +8,8 @@ BINARY TREE NODE CLASS
 #include "btnode.h"
 btnode::btnode(char charIn) {
 	this->c = charIn;
+	this->next = NULL;
+	this->prev = NULL;
 }
 btnode::~btnode() {
 	cout << "btnode deconstructor called" << endl;

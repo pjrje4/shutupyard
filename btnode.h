@@ -20,7 +20,7 @@ class btnode{
 		btnode* getNext();
 		void setPrev(btnode* prevIn);
 		void setNext(btnode* nextIn);
-		private:
+	private:
 		char c;
 		btnode* next; 
 		btnode* prev;

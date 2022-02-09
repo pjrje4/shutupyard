@@ -11,32 +11,23 @@ Shunting Yard Algorithm
 
 using namespace std;
 
+struct linked {
+	char c;
+	linked* next = NULL;
+};
+
 int main() { //main
-	char input[30] = "himynameisstupid";
-	btnode* n1 = new btnode(input[1]);
-	btnode* n2 = new btnode(input[2]);
-	btnode* n3 = new btnode(input[3]);
+	cout << "input expression:" << endl;
+	char input[100];
 
-	n1->setNext(n2);
-	n2->setPrev(n1);
-	n2->setNext(n3);
-	n3->setPrev(n2);
-
-	cout << n1->getChar() << endl;
-	cout << n2->getChar() << endl;
-	cout << n3->getChar() << endl;
-
-	cout << endl;
+	cin.get(input, 100);
+	cin.get();
 	
-	cout << n1->getChar() << endl;
-	cout << n1->getNext()->getChar() << endl;
-	cout << n1->getNext()->getNext()->getChar() << endl;
+	linked* queue = new linked(input[0]);
+	linked* stack = new linked(input[0]);
 
-	cout << endl;
+	queue->setNext(input[1]);
 
-	cout << n3->getChar() << endl;
-	cout << n3->getPrev()->getChar() << endl;
-	cout << n3->getPrev()->getPrev()->getChar() << endl;
 
 	return 0;
 }
