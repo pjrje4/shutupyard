@@ -13,6 +13,9 @@ using namespace std;
 
 struct linked {
 	char c;
+	linked(char cIn) {
+		c = cIn;
+	}
 	linked* next = NULL;
 };
 
@@ -26,8 +29,9 @@ int main() { //main
 	linked* queue = new linked(input[0]);
 	linked* stack = new linked(input[0]);
 
-	queue->setNext(input[1]);
+	queue->next = new linked(input[1]);
 
+	cout << queue->next << endl;
 
 	return 0;
 }
