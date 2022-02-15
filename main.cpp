@@ -18,6 +18,22 @@ struct linked {
 	}
 	linked* next = NULL;
 };
+void push(linked* &head, char cIn) {
+	linked* temp = new linked(cIn);
+	temp->next = head;
+	head = temp;
+}
+void pop(linked* &head) {
+	linked* temp = head;
+	head = head->next;
+	delete temp;
+}
+char top(linked* &head) {
+	return head->c;
+}
+
+
+
 
 int main() { //main
 	cout << "input expression:" << endl;
@@ -31,7 +47,18 @@ int main() { //main
 
 	queue->next = new linked(input[1]);
 
-	cout << queue->next << endl;
+	push(queue, 'v');
+
+	cout << queue->c;
+	cout << queue->next->c << endl;
+	
+	pop(queue);
+
+	cout << queue->c;
+	cout << queue->next->c << endl;
+
+
+
 
 	return 0;
 }
