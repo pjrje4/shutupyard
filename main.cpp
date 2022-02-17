@@ -47,6 +47,7 @@ char dequeue(linked* &head) {
 			delete head->next;
 			head->next = NULL;
 			return temp;
+		}
 	}
 	else {
 		char temp = head->c;
@@ -62,21 +63,38 @@ int main() { //main
 
 	cin.get(input, 100);
 	cin.get();
-	
-	linked* queue = new linked(input[0]);
-	linked* stack = new linked(input[0]);
 
-	queue->next = new linked(input[1]);
+	linked* queue = NULL;
+	linked* stack = NULL;
 
-	enqueue(queue, 'v');
+	for (int i = 0; i <= strlen(input); i++) {
+		char c = input[i];
+		cout << c << endl;
+		if (isdigit(c)) {
+			enqueue(queue, c);
+		}
+		else if (c=='+'||c=='-'||c=='*'||c=='/'||c=='^') {
+			while (top(stack) != '(') {
+				if (c == '+' || c == '-') {
 
-	cout << queue->c;
-	cout << queue->next->c << endl;
-	
-	(queue);
+				}
+				else if (c == '*' || c == '/') {
 
-	cout << queue->c;
-	cout << queue->next->c << endl;
+				}
+				else if (c == '^') {
+
+				}
+			}
+			push(stack, c);
+		}
+		else if (c == '(') {
+			push(stack, c);
+		}
+		else if (c == ')') {
+
+		}
+	}
+
 
 
 
