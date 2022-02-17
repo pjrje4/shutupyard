@@ -32,7 +32,28 @@ char top(linked* &head) {
 	return head->c;
 }
 
-
+void enqueue(linked* &head, char cIn) {
+	linked* temp = new linked(cIn);
+	temp->next = head;
+	head = temp;
+}
+char dequeue(linked* &head) {
+	if (head->next != NULL) {
+		if (head->next->next != NULL) {
+			dequeue(head->next);
+		}
+		else {
+			char temp = head->next->c;
+			delete head->next;
+			head->next = NULL;
+			return temp;
+	}
+	else {
+		char temp = head->c;
+		head = NULL;
+		return temp;
+	}
+}
 
 
 int main() { //main
@@ -47,12 +68,12 @@ int main() { //main
 
 	queue->next = new linked(input[1]);
 
-	push(queue, 'v');
+	enqueue(queue, 'v');
 
 	cout << queue->c;
 	cout << queue->next->c << endl;
 	
-	pop(queue);
+	(queue);
 
 	cout << queue->c;
 	cout << queue->next->c << endl;
