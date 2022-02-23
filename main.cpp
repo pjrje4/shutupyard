@@ -23,10 +23,17 @@ void push(linked* &head, char cIn) {
 	temp->next = head;
 	head = temp;
 }
-void pop(linked* &head) {
+char pop(linked* &head) {
+	char headC = head->c;
 	linked* temp = head;
-	head = head->next;
+	if (head->next != NULL) {
+		head = head->next;
+	}
+	else {
+		head = NULL;
+	}
 	delete temp;
+	return headC;
 }
 char top(linked* &head) {
 	return head->c;
@@ -55,6 +62,14 @@ char dequeue(linked* &head) {
 		return temp;
 	}
 }
+void print(linked* head) {
+	if (head != NULL) {
+		cout << head->c;	
+	}
+	if (head->next != NULL) {
+		print(head->next);
+	}
+}
 
 
 int main() { //main
@@ -75,15 +90,18 @@ int main() { //main
 		}
 		else if (c=='+'||c=='-'||c=='*'||c=='/'||c=='^') {
 			while (top(stack) != '(') {
+				char t = top(stack);
 				if (c == '+' || c == '-') {
-
+					if (t=='*'||t=='/'||t=='^') {
+						break;
+					}
 				}
 				else if (c == '*' || c == '/') {
-
+					if (t=='^') {
+						break;
+					}
 				}
-				else if (c == '^') {
-
-				}
+				enqueue(queue, pop(stack));
 			}
 			push(stack, c);
 		}
@@ -91,13 +109,29 @@ int main() { //main
 			push(stack, c);
 		}
 		else if (c == ')') {
-
+			while (top(stack) != '(') {
+				if (stack != NULL) {
+					cout << "Operator Stack Not Empty" << endl;
+					enqueue(queue, pop(stack));
+				}
+				else {
+					cout << "Mismatched Parenthesis" << endl;
+					return 1;
+				}
+			}
+			cout << "Left Parenthesis" << endl;
+			pop(stack);
 		}
 	}
-
-
-
-
-
+	while (stack != NULL) {
+		if (top(stack) == '(' || top(stack) == ')') {
+			cout << "Mismatched Parenthesis" << endl;
+			return 1;
+		}
+		else {
+			cout << "Not a left parenthesis" << endl;
+			enqueue(queue, pop(stack));
+		}
+	}
 	return 0;
 }
