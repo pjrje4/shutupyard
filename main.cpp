@@ -18,6 +18,10 @@ struct linked {
 	}
 	linked* next = NULL;
 };
+
+void pushbt (btstack* &head, btnode* n) {
+	n->next = 
+
 void push(linked* &head, char cIn) {
 	linked* temp = new linked(cIn);
 	temp->next = head;
@@ -80,6 +84,19 @@ void reverse(linked* &head) {
 	}
 	head = output;
 }
+
+int length(linked* head) {
+	int l = 0;
+	if (head != NULL) {
+		l++;
+	}
+	while (head->next != NULL) {
+		l++;
+		head = head->next;
+	}
+	return l;
+}
+
 
 
 
@@ -160,5 +177,22 @@ int main() { //main
 	}
 	reverse(queue);
 	print(queue);
+	cout << endl;
+	stack = queue;
+
+	cout << length(stack) << endl;
+
+	btstack* bts = NULL;
+	for (int i = 0; i <= length(stack) - 1; i++) {
+		linked* headT = stack;
+		for (int j = 0; j < i; j++) {
+			headT = headT->next;
+		}
+
+		cout << headT->c;
+		cout << endl;
+	}
+
+
 	return 0;
 }
