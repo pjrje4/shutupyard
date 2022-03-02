@@ -6,14 +6,15 @@ BINARY TREE NODE CLASS
 #endif
 
 #include "btnode.h"
-btnode::btnode(char charIn) {
+btnode::btnode(char charIn) { // para const
 	this->c = charIn;
 	this->next = NULL;
 	this->prev = NULL;
 }
-btnode::~btnode() {
+btnode::~btnode() { // destruct
 	cout << "btnode deconstructor called" << endl;
 }
+//getters and setters
 char btnode::getChar() {
 	return this->c;
 }

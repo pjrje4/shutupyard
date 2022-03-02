@@ -13,15 +13,16 @@ BINARY TREE NODE CLASS
 using namespace std;
 class btnode{
 	public:
-		btnode(char charIn);
-		~btnode();
+		btnode(char charIn); //para const
+		~btnode(); //destruct
+		//getters and setters
 		char getChar();
 		btnode* getPrev();
 		btnode* getNext();
 		void setPrev(btnode* prevIn);
 		void setNext(btnode* nextIn);
 	private:
-		char c;
+		char c; // storage
 		btnode* next; 
 		btnode* prev;
 };
